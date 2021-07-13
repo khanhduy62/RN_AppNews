@@ -7,7 +7,6 @@ type Props = {
   name: string;
   color: string;
 };
-
 const Icon = ({ name, color }: Props) => {
   const SvgImage = () => (
     <SvgXml xml={getMarkup(color)[name]} /*width="301px"*/ />
