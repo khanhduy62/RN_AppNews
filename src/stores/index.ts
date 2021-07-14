@@ -24,3 +24,7 @@ export function useStores() {
     }
     return store;
 }
+export function getStore() {
+    const { appStore: { test } } = useStores();
+    return {test};
+}

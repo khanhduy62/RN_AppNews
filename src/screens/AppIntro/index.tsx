@@ -11,8 +11,14 @@ import {
 import getGlobalStyles from "../../styles/globalStyles";
 import getStyles from "./styles";
 import { getWidth, getHeight } from "../../styles/index";
+import { getStore } from "../../stores";
+import { observer } from 'mobx-react-lite';
 
 const AppIntro = ({ navigation }: ScreenProp) => {
+  const {test} = getStore();
+  React.useEffect(() => {
+    console.log('test:',test)
+  }, [])
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
 
@@ -100,4 +106,4 @@ const AppIntro = ({ navigation }: ScreenProp) => {
   );
 };
 
-export default AppIntro;
+export default observer(AppIntro);
