@@ -1,49 +1,49 @@
-import React from "react";
-import { Text, SafeAreaView, ScrollView, View } from "react-native";
-import getGlobalStyles from "../../styles/globalStyles";
-import getStyles from "./styles";
-import { CategoryCard } from "../../components/Cards";
+import React from 'react';
+import {Text, SafeAreaView, ScrollView, View} from 'react-native';
+import getGlobalStyles from '../../styles/globalStyles';
+import getStyles from './styles';
+import {CategoryCard} from '../../components/Cards';
 
-const Categories = ({ navigation }: ScreenProp) => {
+const Categories = ({navigation}: ScreenProp) => {
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
 
   const categories = [
     {
-      name: "🏈   Sports",
+      name: '🏈   Sports',
     },
     {
-      name: "⚖️   Politics",
+      name: '⚖️   Politics',
     },
     {
-      name: "🌞   Life",
+      name: '🌞   Life',
     },
     {
-      name: "🎮   Gaming",
+      name: '🎮   Gaming',
     },
     {
-      name: "🐻   Animals",
+      name: '🐻   Animals',
     },
     {
-      name: "🌴   Nature",
+      name: '🌴   Nature',
     },
     {
-      name: "🍔   Food",
+      name: '🍔   Food',
     },
     {
-      name: "🎨   Art",
+      name: '🎨   Art',
     },
     {
-      name: "📜   History",
+      name: '📜   History',
     },
     {
-      name: "👗   Fashion",
+      name: '👗   Fashion',
     },
     {
-      name: "😷   Covid-19",
+      name: '😷   Covid-19',
     },
     {
-      name: "⚔️   Middle East",
+      name: '⚔️   Middle East',
     },
   ];
 
@@ -62,7 +62,7 @@ const Categories = ({ navigation }: ScreenProp) => {
                 <CategoryCard
                   key={index}
                   topic={category}
-                  onPress={() => navigation.navigate("")}
+                  onPress={() => navigation.navigate('')}
                 />
               );
             })}

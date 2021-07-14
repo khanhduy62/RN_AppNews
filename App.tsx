@@ -9,37 +9,24 @@
  */
 import React from 'react'
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
   useColorScheme,
   View
 } from 'react-native'
+import { Provider, rootStore } from './src/stores';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions
-} from 'react-native/Libraries/NewAppScreen'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
 
-import Navigation from './src';
+import { Navigation } from './src/App'
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark'
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
-  }
-
   return (
-      <View style={{ flex: 1 ,backgroundColor:'#f00'}}>
+    <Provider value={rootStore}>
+      <RootSiblingParent>
         <Navigation />
-      </View>
+      </RootSiblingParent>
+    </Provider>
   )
-};
+}
 
 export default App
