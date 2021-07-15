@@ -4,7 +4,7 @@ import { colors, getHeight, getWidth } from './index';
 const styles = () => {
   return StyleSheet.create({
     safeArea: {
-      height: '100%', paddingTop: '10%', flex: 1, backgroundColor: '#fff'
+      height: '100%', flex: 1, backgroundColor: '#fff'
     },
     scrollView: {
       height: '100%', backgroundColor: '#fff'
