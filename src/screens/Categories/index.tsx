@@ -102,7 +102,7 @@ const Categories = ({navigation}: ScreenProp) => {
     <SafeAreaView style={globalStyles.safeArea}>
       <ScrollView style={globalStyles.scrollView}>
         <View style={[globalStyles.container]}>
-          <Text style={globalStyles.pageTitle}> Categories</Text>
+          <Text style={globalStyles.pageTitle}>Categories</Text>
           <Text style={globalStyles.pageSubHeading}>
             Thousands of articles in each category
           </Text>
