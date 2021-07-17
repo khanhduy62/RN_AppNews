@@ -12,7 +12,7 @@ const styles = () => {
       position: 'absolute',
       width: '100%',
       height: '100%',
-      backgroundColor: 'rgba(34,36,47,0.4)',
+      backgroundColor: 'rgba(34,36,47,0.6)',
       borderRadius: 12,
     },
     bookmarkIcon: {
@@ -34,6 +34,12 @@ const styles = () => {
       color: 'white',
       fontSize: getHeight(16),
       lineHeight: getHeight(24),
+      fontWeight: 'bold',
+    },
+    featureCardImage: {
+      height: '100%',
+      width: '100%',
+      borderRadius: 12,
     },
 
     // category card
@@ -92,12 +98,19 @@ const styles = () => {
       fontSize: getHeight(14),
       marginBottom: getHeight(8),
       letterSpacing: getWidth(1),
+      marginRight: getWidth(40),
     },
     postCardContentTitle: {
       fontSize: getHeight(16),
 
       color: colors.blackPrimary,
       lineHeight: getHeight(24),
+    },
+    postCardImage: {
+      width: getWidth(96),
+      height: getHeight(96),
+      borderRadius: 12,
+      backgroundColor: '#ccc',
     },
   });
 };

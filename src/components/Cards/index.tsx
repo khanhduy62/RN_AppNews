@@ -12,13 +12,15 @@ import getGlobalStyles from '../../styles/globalStyles';
 import getStyles from './styles';
 import Icon from '../../components/Icon';
 import {getHeight, getWidth} from '../../styles';
+import {getImageURL} from 'common';
 
 // post cards
 type PostCardProps = {
   post: {
     title: string;
     image: string;
-    category: string;
+    categories: Array<string>;
+    excerpt: string;
   };
   onPress: () => void;
 };
@@ -28,15 +30,19 @@ export const PostCard = ({post, onPress}: PostCardProps) => {
   const styles = getStyles();
 
   return (
-    <TouchableOpacity style={styles.postCard} onPress={() => onPress(post)}>
+    <TouchableOpacity style={styles.postCard} onPress={onPress}>
       <Image
-        source={{uri: post.image}}
+        source={{uri: getImageURL(post.image)}}
         resizeMode="cover"
-        style={{width: getWidth(96), height: getHeight(96), borderRadius: 12}}
+        style={styles.postCardImage}
       />
       <View style={styles.postCardContent}>
-        <Text style={styles.postCardContentCategory}>{post.category}</Text>
-        <Text style={styles.postCardContentTitle}>{post.title}</Text>
+        <Text style={styles.postCardContentCategory} numberOfLines={1}>
+          {post.title}
+        </Text>
+        <Text style={styles.postCardContentTitle} numberOfLines={2}>
+          {post.excerpt}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -88,10 +94,10 @@ export const CategoryCard = ({onPress, topic}: CategoryCardProps) => {
 type FeatureCardProps = {
   feature: {
     image: string;
-    category: string;
+    categories: Array<string>;
     title: string;
   };
-  totalFeatures: string;
+  totalFeatures: number;
   index: number;
 };
 
@@ -109,23 +115,25 @@ export const FeatureCard = ({
         styles.featureCard,
         {
           marginRight:
-            index === totalFeatures.length - 1 ? getWidth(40) : getWidth(16),
+            index === totalFeatures - 1 ? getWidth(40) : getWidth(16),
         },
       ]}>
       <Image
-        source={{uri: feature.image}}
+        source={{uri: getImageURL(feature.image)}}
         resizeMode="cover"
-        style={{height: '100%', width: '100%', borderRadius: 12}}
+        style={styles.featureCardImage}
       />
       <View style={styles.featureCardOverlay}>
         <View style={styles.bookmarkIcon}>
           <Icon name="bookmark" color="white" />
         </View>
         <View style={styles.featureCardContent}>
-          <Text style={styles.featureCardCategory}>
-            {feature.category.toUpperCase()}
+          <Text style={styles.featureCardCategory} numberOfLines={1}>
+            {feature.categories[0].toUpperCase()}
           </Text>
-          <Text style={styles.featureCardTitle}>{feature.title}</Text>
+          <Text style={styles.featureCardTitle} numberOfLines={2}>
+            {feature.title}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
