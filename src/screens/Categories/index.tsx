@@ -85,17 +85,18 @@ const Categories = ({navigation}: ScreenProp) => {
   const [categories, setCategories] = useState(DATA);
 
   const onPress = (param: {name: string}) => {
-    setCategories(
-      categories.map(el => {
-        if (el.name === param.name) {
-          return {
-            ...el,
-            checked: !el.checked,
-          };
-        }
-        return el;
-      }),
-    );
+    navigation.navigate('ListPost')
+    // setCategories(
+    //   categories.map(el => {
+    //     if (el.name === param.name) {
+    //       return {
+    //         ...el,
+    //         checked: !el.checked,
+    //       };
+    //     }
+    //     return el;
+    //   }),
+    // );
   };
 
   return (

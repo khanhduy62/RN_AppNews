@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
 
 // screens
-import AppIntroScreen from '../screens/AppIntro';
+import AppIntroScreen from 'screens/AppIntro';
 import IntroScreen from '../screens/AppIntro/intro';
 import SigninScreen from '../screens/AuthScreens/Signin';
 import SignupScreen from '../screens/AuthScreens/Signup';
@@ -19,7 +19,7 @@ import TermsScreen from '../screens/Profile/Terms';
 import PrivacyScreen from '../screens/Profile/Privacy';
 import {TabNavigation} from './TabNavigation';
 import {navigationRef} from './NavigationService';
-
+import ListPostScreen from 'screens/ListPostScreen';
 const Stack = createStackNavigator();
 
 export const Navigation = () => {
@@ -49,6 +49,7 @@ export const Navigation = () => {
         <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
         <Stack.Screen name="Terms" component={TermsScreen} />
         <Stack.Screen name="Privacy" component={PrivacyScreen} />
+        <Stack.Screen name="ListPost" component={ListPostScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
