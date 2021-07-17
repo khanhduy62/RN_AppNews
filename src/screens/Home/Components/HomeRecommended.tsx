@@ -43,7 +43,7 @@ const HomeRecommended = (props, ref) => {
         return (
           <PostCard
             post={post}
-            onPress={() => navigate('ReadPost')}
+            onPress={() => navigate('ReadPost',post)}
             key={`${post._id}`}
           />
         );

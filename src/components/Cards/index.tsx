@@ -99,18 +99,21 @@ type FeatureCardProps = {
   };
   totalFeatures: number;
   index: number;
+  onPress:()=>void
 };
 
 export const FeatureCard = ({
   feature,
   totalFeatures,
   index,
+  onPress
 }: FeatureCardProps) => {
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
 
   return (
     <TouchableOpacity
+    onPress={onPress}
       style={[
         styles.featureCard,
         {

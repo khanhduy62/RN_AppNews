@@ -5,6 +5,7 @@ import getStyles from '../styles';
 import {FeatureCard} from 'components/Cards';
 import {useHandlerActions} from '../Hooks';
 import {ACTION_EVENTS} from '../Types';
+import {navigate} from 'navigation/NavigationService';
 
 type FeaturedProps = {
   _id: number;
@@ -12,6 +13,7 @@ type FeaturedProps = {
   image: string;
   categories: Array<string>;
   excerpt: string;
+  slug:string;
 };
 
 const HomeFeatured = (props, ref) => {
@@ -41,6 +43,7 @@ const HomeFeatured = (props, ref) => {
             feature={feature}
             key={`${feature._id}`}
             index={index}
+            onPress={() => navigate('ReadPost',feature)}
           />
         );
       })}
