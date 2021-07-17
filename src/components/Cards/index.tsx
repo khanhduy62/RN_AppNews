@@ -91,7 +91,7 @@ type FeatureCardProps = {
     category: string;
     title: string;
   };
-  totalFeatures: string;
+  totalFeatures: string | Array<object>;
   index: number;
 };
 
