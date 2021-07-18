@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   Text,
   SafeAreaView,
@@ -15,6 +15,9 @@ import getGlobalStyles from '../../styles/globalStyles';
 import getStyles from './styles';
 import HomeRecommended from './Components/HomeRecommended';
 import HomeFeatured from './Components/HomeFeatured';
+import {fcmService} from 'fcm/FCMService';
+import {localNotificationService} from 'fcm/LocalNotificationService';
+import {isAndroid} from 'common';
 
 const TIME_OUT = 1000;
 
@@ -46,6 +49,40 @@ const Home = ({navigation}: ScreenProp) => {
   const homeRecommendedRef = useRef<HomeRecommendedRef>();
   const [activeTag, setactiveTag] = useState(tags[0]);
   const [refreshing, setRefreshingState] = useState(false);
+
+  useEffect(() => {
+    const onRegister = token => {
+      console.log('log--onRegister-token ', token);
+    };
+
+    const onNotification = notification => {
+      console.log('log--onNotification ', notification);
+      localNotificationService.showNotification(
+        0,
+        notification.title,
+        notification.body,
+        {},
+        {},
+      );
+    };
+
+    const onOpenNotification = notification => {
+      console.log('log--onOpenNotification ', notification);
+    };
+
+    if (isAndroid) {
+      fcmService.registerAppWithFCM();
+      fcmService.register(onRegister, onNotification, onOpenNotification);
+      localNotificationService.configure();
+    }
+
+    return () => {
+      if (isAndroid) {
+        fcmService.unRegister();
+        localNotificationService.unRegister();
+      }
+    };
+  }, []);
 
   const _onRefresh = () => {
     setRefreshingState(true);
