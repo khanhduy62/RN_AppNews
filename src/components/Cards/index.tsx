@@ -19,6 +19,7 @@ type PostCardProps = {
   post: {
     title: string;
     image: string;
+    image_200: string | undefined;
     categories: Array<string>;
     excerpt: string;
   };
@@ -32,7 +33,7 @@ export const PostCard = ({post, onPress}: PostCardProps) => {
   return (
     <TouchableOpacity style={styles.postCard} onPress={onPress}>
       <Image
-        source={{uri: getImageURL(post.image)}}
+        source={{uri: getImageURL(post.image_200 || post.image)}}
         resizeMode="cover"
         style={styles.postCardImage}
       />
@@ -51,7 +52,8 @@ export const PostCard = ({post, onPress}: PostCardProps) => {
 // categoryCard
 type CategoryCardProps = {
   topic: {
-    checked: boolean;
+    id: string;
+    checked?: boolean;
     name: string;
     image: string;
   };

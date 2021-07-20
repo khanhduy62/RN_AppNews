@@ -1,91 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Text, SafeAreaView, ScrollView, View} from 'react-native';
 import getGlobalStyles from '../../styles/globalStyles';
 import getStyles from './styles';
 import {CategoryCard} from '../../components/Cards';
+import {categories} from 'common/data';
+import { navigate } from 'navigation/NavigationService';
 
-const DATA = [
-  {
-    name: 'Sports',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Politics',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Life',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Gaming',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Animals',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Nature',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Food',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Art',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'History',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Fashion',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Covid-19',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-  {
-    name: 'Middle East',
-    checked: false,
-    image:
-      'https://images.unsplash.com/photo-1568688032800-e973b4c925e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGVob3VzZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
-  },
-];
 
-const Categories = ({navigation}: ScreenProp) => {
+const Categories = () => {
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
-  const [categories, setCategories] = useState(DATA);
+  // const [categories, setCategories] = useState(DATA);
 
-  const onPress = (param: {name: string}) => {
-    navigation.navigate('ListPost')
+  const onPress = (param: {id: string}) => {
+    navigate('ListPost', {id: param.id});
     // setCategories(
     //   categories.map(el => {
     //     if (el.name === param.name) {
