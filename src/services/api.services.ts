@@ -45,3 +45,12 @@ export async function getEditorPicks() {
     return [error, null];
   }
 }
+
+export async function searchApi(query: string, page = 1) {
+  try {
+    const data = await RequestHelper.get('search', {}, {query, page}, false);
+    return [null, data];
+  } catch (error) {
+    return [error, null];
+  }
+}

@@ -20,6 +20,7 @@ import PrivacyScreen from '../screens/Profile/Privacy';
 import {TabNavigation} from './TabNavigation';
 import {navigationRef} from './NavigationService';
 import ListPostScreen from 'screens/ListPostScreen';
+import HomeSearching from 'screens/HomeSearching';
 const Stack = createStackNavigator();
 
 export const Navigation = () => {
@@ -50,6 +51,7 @@ export const Navigation = () => {
         <Stack.Screen name="Terms" component={TermsScreen} />
         <Stack.Screen name="Privacy" component={PrivacyScreen} />
         <Stack.Screen name="ListPost" component={ListPostScreen} />
+        <Stack.Screen name="HomeSearching" component={HomeSearching} />
       </Stack.Navigator>
     </NavigationContainer>
   );

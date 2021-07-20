@@ -6,11 +6,13 @@ import {PostCard} from 'components/Cards';
 import {navigate} from 'navigation/NavigationService';
 import {useHandlerActions} from '../Hooks';
 import {ACTION_EVENTS} from '../Types';
+import { colors } from 'styles';
 
 type PostCardProps = {
   _id: number;
   title: string;
   image: string;
+  image_200: string | undefined;
   categories: Array<string>;
   excerpt: string;
 };
@@ -43,12 +45,12 @@ const HomeRecommended = (props, ref) => {
         return (
           <PostCard
             post={post}
-            onPress={() => navigate('ReadPost',post)}
+            onPress={() => navigate('ReadPost', post)}
             key={`${post._id}`}
           />
         );
       })}
-      {loading && <ActivityIndicator />}
+      {loading && <ActivityIndicator color={colors.primary} />}
     </View>
   );
 };
