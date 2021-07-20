@@ -38,7 +38,7 @@ const ListPostScreen = ({navigation}: ScreenProp) => {
   }, []);
 
   const onLoadMore = () => {
-    if (!loading) {
+    if (!loading && nextPage < 30) {
       handleAction({
         category: id,
         page: nextPage,
