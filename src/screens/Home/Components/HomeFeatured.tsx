@@ -6,6 +6,7 @@ import {FeatureCard} from 'components/Cards';
 import {useHandlerActions} from '../Hooks';
 import {ACTION_EVENTS} from '../Types';
 import {navigate} from 'navigation/NavigationService';
+import { colors } from 'styles';
 
 type FeaturedProps = {
   _id: number;
@@ -47,7 +48,7 @@ const HomeFeatured = (props, ref) => {
           />
         );
       })}
-      {loading && <ActivityIndicator />}
+      {loading && <ActivityIndicator color={colors.primary} />}
     </ScrollView>
   );
 };

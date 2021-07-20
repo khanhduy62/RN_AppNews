@@ -91,7 +91,7 @@ const styles = () => {
 
     postCardContent: {
       marginLeft: getWidth(16),
-      width: '70%',
+      flex: 1,
     },
     postCardContentCategory: {
       color: colors.grayPrimary,

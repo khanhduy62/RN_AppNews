@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import getGlobalStyles from "../../styles/globalStyles";
-import getStyles from "./styles";
-import { Text, TextInput, View, TouchableOpacity } from "react-native";
-import { colors, getWidth } from "../../styles";
-import Icon from "../Icon";
+import React, {useState} from 'react';
+import getGlobalStyles from '../../styles/globalStyles';
+import getStyles from './styles';
+import {Text, TextInput, View, TouchableOpacity} from 'react-native';
+import {colors, getWidth} from '../../styles';
+import Icon from '../Icon';
+import { navigate } from 'navigation/NavigationService';
 
 type TextInputProps = {
   placeholder: string;
   icon: string;
 };
 
-export const PrimaryCustomTextInput = ({
-  placeholder,
-  icon,
-}: TextInputProps) => {
+export const PrimaryCustomTextInput = ({placeholder, icon}: TextInputProps) => {
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
   const [isFocused, setisFocused] = useState(false);
@@ -26,11 +24,10 @@ export const PrimaryCustomTextInput = ({
       style={[
         styles.primaryTextInputStyle,
         {
-          borderColor: isFocused ? colors.primary : "transparent",
-          backgroundColor: isFocused ? "transparent" : colors.grayLighter,
+          borderColor: isFocused ? colors.primary : 'transparent',
+          backgroundColor: isFocused ? 'transparent' : colors.grayLighter,
         },
-      ]}
-    >
+      ]}>
       <Icon
         name={icon}
         color={isFocused ? colors.primary : colors.grayPrimary}
@@ -48,9 +45,7 @@ export const PrimaryCustomTextInput = ({
 type PasswordInputProps = {
   placeholder: string;
 };
-export const PasswordCustomTextInput = ({
-  placeholder,
-}: PasswordInputProps) => {
+export const PasswordCustomTextInput = ({placeholder}: PasswordInputProps) => {
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
   const [isFocused, setisFocused] = useState(false);
@@ -66,11 +61,10 @@ export const PasswordCustomTextInput = ({
       style={[
         styles.primaryTextInputStyle,
         {
-          borderColor: isFocused ? colors.primary : "transparent",
-          backgroundColor: isFocused ? "transparent" : colors.grayLighter,
+          borderColor: isFocused ? colors.primary : 'transparent',
+          backgroundColor: isFocused ? 'transparent' : colors.grayLighter,
         },
-      ]}
-    >
+      ]}>
       <Icon
         name="lock"
         color={isFocused ? colors.primary : colors.grayPrimary}
@@ -93,12 +87,15 @@ export const PasswordCustomTextInput = ({
 type SearchInputProps = {
   placeholder: string;
 };
-export const SearchCustomTextInput = ({ placeholder }: SearchInputProps) => {
+export const SearchCustomTextInput = ({placeholder}: SearchInputProps) => {
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
   const [isFocused, setisFocused] = useState(false);
 
-  const handleFocus = () => setisFocused(true);
+  const handleFocus = () => {
+    setisFocused(true);
+    navigate('HomeSearching');
+  };
   const handleBlur = () => setisFocused(false);
 
   return (
@@ -106,11 +103,10 @@ export const SearchCustomTextInput = ({ placeholder }: SearchInputProps) => {
       style={[
         styles.primaryTextInputStyle,
         {
-          borderColor: isFocused ? colors.primary : "transparent",
-          backgroundColor: isFocused ? "transparent" : colors.grayLighter,
+          borderColor: isFocused ? colors.primary : 'transparent',
+          backgroundColor: isFocused ? 'transparent' : colors.grayLighter,
         },
-      ]}
-    >
+      ]}>
       <Icon
         name="search"
         color={isFocused ? colors.primary : colors.grayPrimary}
