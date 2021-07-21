@@ -24,7 +24,7 @@ const ListPostScreen = ({navigation}: ScreenProp) => {
 
   const route = useRoute<RouteProp<ParamList, 'Detail'>>();
   const id = route.params.id;
-
+  const nameCate = route.params.name;
   const {loading, data, nextPage, handleAction} = useHandlerActions({
     actionName: ACTION_EVENTS.GET_ARTICLES_BY_CATEGORY,
   });
@@ -74,6 +74,7 @@ const ListPostScreen = ({navigation}: ScreenProp) => {
       <View style={globalStyles.scrollView}>
         <View style={[globalStyles.container]}>
           <Text style={globalStyles.pageTitle}>Categories</Text>
+          <Text style={globalStyles.pageSubHeading}>{nameCate}</Text>
           {!loading && data.length === 0 && (
             <View style={styles.noBookmark}>
               <Icon name="noBookmark" />

@@ -21,6 +21,7 @@ const styles = () => {
       fontWeight: '600',
       color: colors.blackPrimary,
       marginTop: getHeight(50),
+      marginBottom:20
     },
     pageSubHeading: {
       marginTop: getHeight(10),

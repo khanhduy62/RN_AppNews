@@ -22,8 +22,8 @@ const Profile = ({ navigation }: ScreenProp) => {
     <SafeAreaView style={globalStyles.safeArea}>
       <ScrollView style={globalStyles.scrollView}>
         <View style={[globalStyles.container]}>
-          <Text style={globalStyles.pageTitle}>Profile</Text>
-          <View style={styles.profile}>
+          <Text style={globalStyles.pageTitle}>Setting</Text>
+          {/* <View style={styles.profile}>
             <Image
               source={{
                 uri:
@@ -36,7 +36,7 @@ const Profile = ({ navigation }: ScreenProp) => {
               <Text style={styles.profileDetailName}>Juliet Takashi</Text>
               <Text style={styles.profileDetailEmail}>J.Takashi@mail.com</Text>
             </View>
-          </View>
+          </View> */}
           {/* options */}
           <View style={styles.optionCard}>
             <Text style={styles.optionCardText}>Notifications</Text>
@@ -74,13 +74,13 @@ const Profile = ({ navigation }: ScreenProp) => {
             <Text style={styles.optionCardText}>Terms & Conditions</Text>
             <Icon name="arrowRight" color={colors.grayDarker} />
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => navigation.navigate("Signin")}
             style={styles.optionCard}
           >
             <Text style={styles.optionCardText}>Sign Out</Text>
             <Icon name="signout" color={colors.grayDarker} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ScrollView>
     </SafeAreaView>

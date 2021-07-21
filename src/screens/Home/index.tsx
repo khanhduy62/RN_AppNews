@@ -18,6 +18,7 @@ import HomeFeatured from './Components/HomeFeatured';
 import {fcmService} from 'fcm/FCMService';
 import {localNotificationService} from 'fcm/LocalNotificationService';
 import {isAndroid} from 'common';
+import {categories} from 'common/data';
 
 const TIME_OUT = 1000;
 
@@ -32,19 +33,7 @@ type HomeRecommendedRef = {
 const Home = ({navigation}: ScreenProp) => {
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
-  const [tags, settags] = useState([
-    'Random',
-    'Sports',
-    'Politics',
-    'Life',
-    'Gaming',
-    'Animals',
-    'Nature',
-    'Food',
-    'Art',
-    'History',
-    'Fashion',
-  ]);
+  const [tags, settags] = useState(categories);
   const homeFeaturedRef = useRef<HomeFeaturedRef>();
   const homeRecommendedRef = useRef<HomeRecommendedRef>();
   const [activeTag, setactiveTag] = useState(tags[0]);
@@ -115,7 +104,9 @@ const Home = ({navigation}: ScreenProp) => {
           {tags.map((tag, index) => {
             return (
               <TouchableOpacity
-                onPress={() => setactiveTag(tag)}
+                onPress={() => {
+                  navigation.navigate('ListPost', tag);
+                }}
                 key={index}
                 style={[
                   globalStyles.tag,
@@ -123,17 +114,19 @@ const Home = ({navigation}: ScreenProp) => {
                     marginRight:
                       index === tags.length - 1 ? getWidth(40) : getWidth(16),
                     backgroundColor:
-                      activeTag === tag ? colors.primary : colors.grayLighter,
+                      activeTag === tag.name
+                        ? colors.primary
+                        : colors.grayLighter,
                   },
                 ]}>
                 <Text
                   style={[
                     globalStyles.tagText,
                     {
-                      color: activeTag == tag ? 'white' : colors.grayPrimary,
+                      color: activeTag == tag.name ? 'white' : colors.grayPrimary,
                     },
                   ]}>
-                  {tag}
+                  {tag.name}
                 </Text>
               </TouchableOpacity>
             );

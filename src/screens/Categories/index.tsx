@@ -4,16 +4,15 @@ import getGlobalStyles from '../../styles/globalStyles';
 import getStyles from './styles';
 import {CategoryCard} from '../../components/Cards';
 import {categories} from 'common/data';
-import { navigate } from 'navigation/NavigationService';
-
+import {navigate} from 'navigation/NavigationService';
 
 const Categories = () => {
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
   // const [categories, setCategories] = useState(DATA);
 
-  const onPress = (param: {id: string}) => {
-    navigate('ListPost', {id: param.id});
+  const onPress = (param: {id: string; name: string}) => {
+    navigate('ListPost', {id: param.id, name: param.name});
     // setCategories(
     //   categories.map(el => {
     //     if (el.name === param.name) {

@@ -35,7 +35,7 @@ const GetStarted = ({ navigation }: ScreenProp) => {
             </Text>
           </View>
           <PrimaryButton
-            onPress={() => navigation.push("Signin")}
+            onPress={() => navigation.push("App")}
             text="Get Started"
           />
         </View>

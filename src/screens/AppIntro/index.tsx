@@ -11,13 +11,18 @@ import {
 import getGlobalStyles from "../../styles/globalStyles";
 import getStyles from "./styles";
 import { getWidth, getHeight } from "../../styles/index";
-import { getStore } from "../../stores";
+import { getTestStore } from "../../stores/test.store";
 import { observer } from 'mobx-react-lite';
-
+import { ApiServices } from "../../services";
 const AppIntro = ({ navigation }: ScreenProp) => {
-  const {test} = getStore();
+  const {test,testFun} = getTestStore();
   React.useEffect(() => {
-    console.log('test:',test)
+    console.log('test:',test);
+    const getApi =async ()=>{
+      const [err,data]=await ApiServices.getArticlesByCatogry('top-stories',2);
+      console.log('data api:',data);
+    }
+    getApi();``
   }, [])
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
@@ -50,6 +55,7 @@ const AppIntro = ({ navigation }: ScreenProp) => {
   ];
 
   const onPressNext = () => {
+    // testFun();
     // @ts-ignore
     if (state.activeItem < 2) return ref?.current?.snapToNext();
     if (state.activeItem === 2) {
@@ -97,6 +103,7 @@ const AppIntro = ({ navigation }: ScreenProp) => {
             </Text>
             <Text style={styles.subHeading}>
               {data[state.activeItem]["subHeading"]}
+              {/* {test} */}
             </Text>
           </View>
           <PrimaryButton onPress={onPressNext} text="Next" />
