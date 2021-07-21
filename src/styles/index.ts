@@ -37,7 +37,7 @@ export const getWidth = (value: number) => getComputed(value, "w");
 export const getHeight = (value: number) => getComputed(value, "h");
 
 export const colors = {
-  primary: "#475AD7",
+  primary: "#0A0A0A",
   blackPrimary: "#333647",
   grayPrimary: "#7C82A1",
   grayLighter: "#F3F4F6",

@@ -65,7 +65,7 @@ const styles = () => {
     },
     vBlur: {
       flex: 1,
-      opacity: 0.2,
+      opacity: 0.6,
       backgroundColor: 'black',
       width: '100%',
     },
