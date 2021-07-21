@@ -9,6 +9,7 @@ import {useHandlerActions} from './Hooks';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {ActivityIndicator} from 'react-native';
 import {navigate} from 'navigation/NavigationService';
+import CustomHeader from 'components/CustomHeader';
 
 const TIME_OUT = 1000;
 
@@ -72,8 +73,13 @@ const ListPostScreen = ({navigation}: ScreenProp) => {
   return (
     <SafeAreaView style={globalStyles.safeArea}>
       <View style={globalStyles.scrollView}>
+        <CustomHeader
+          isBackButton={true}
+          containerStyle={styles.vHeader}
+          title="Category"
+        />
         <View style={[globalStyles.container]}>
-          <Text style={globalStyles.pageTitle}>Categories</Text>
+          {/* <Text style={styles.pageTitle}>Categories</Text> */}
           <Text style={globalStyles.pageSubHeading}>{nameCate}</Text>
           {!loading && data.length === 0 && (
             <View style={styles.noBookmark}>

@@ -21,15 +21,37 @@ import {TabNavigation} from './TabNavigation';
 import {navigationRef} from './NavigationService';
 import ListPostScreen from 'screens/ListPostScreen';
 import HomeSearching from 'screens/HomeSearching';
+import Splash from 'screens/Splash';
 const Stack = createStackNavigator();
+
+const defaultOptions = {
+  gestureEnabled: false,
+};
 
 export const Navigation = () => {
   return (
     <NavigationContainer ref={navigationRef} fallback={<View />}>
-      <Stack.Navigator initialRouteName="AppIntro" headerMode="none">
-        <Stack.Screen name="App" component={TabNavigation} />
-        <Stack.Screen name="AppIntro" component={AppIntroScreen} />
-        <Stack.Screen name="Intro" component={IntroScreen} />
+      <Stack.Navigator initialRouteName="Splash" headerMode="none">
+        <Stack.Screen
+          name="Splash"
+          options={defaultOptions}
+          component={Splash}
+        />
+        <Stack.Screen
+          name="App"
+          options={defaultOptions}
+          component={TabNavigation}
+        />
+        <Stack.Screen
+          name="AppIntro"
+          options={defaultOptions}
+          component={AppIntroScreen}
+        />
+        <Stack.Screen
+          name="Intro"
+          options={defaultOptions}
+          component={IntroScreen}
+        />
         <Stack.Screen name="Signin" component={SigninScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen

@@ -5,8 +5,12 @@ interface ScreenProp {
     getParam: (paramName: string, defaultValue?: any) => any;
     navigate: (routeName: string, params?: any) => void;
     replace: (routeName: string, params?: any) => void;
-    state: {routeName: string;key: string;params: any;
+    state: {
+      routeName: string;
+      key: string;
+      params: any;
     };
+    addListener: (name, cb) => void;
   };
   route?: {
     params: any;

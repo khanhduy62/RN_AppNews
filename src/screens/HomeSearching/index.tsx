@@ -6,8 +6,11 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  ActivityIndicator,
+  Text,
 } from 'react-native';
 import debounce from 'lodash/debounce';
+import isEmpty from 'lodash/isEmpty';
 
 import styles from './styles';
 import {colors} from '../../styles';
@@ -16,6 +19,8 @@ import getGlobalStyles from '../../styles/globalStyles';
 import {searchApi} from 'services/api.services';
 import Latest from './Components/Latest';
 import Articles from './Components/Articles';
+import CustomHeader from 'components/CustomHeader';
+import { useRef } from 'react';
 
 const HomeSearching = () => {
   const globalStyles = getGlobalStyles();
@@ -23,6 +28,7 @@ const HomeSearching = () => {
   const [latest, setLatest] = useState([]);
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const isSearched = useRef({value: false}).current;
 
   const handleFocus = () => setisFocused(true);
   const handleBlur = () => setisFocused(false);
@@ -46,11 +52,14 @@ const HomeSearching = () => {
   const handler = debounce(getData, 500);
 
   const onChangeText = text => {
+    isSearched.value = true;
     handler(text);
   };
 
   return (
     <SafeAreaView style={globalStyles.safeArea}>
+      <CustomHeader isBackButton={true} containerStyle={styles.vHeader} />
+
       <View style={styles.container}>
         <View
           style={[
@@ -79,6 +88,12 @@ const HomeSearching = () => {
         </View>
       </View>
       <ScrollView>
+        {loading && isEmpty(latest) && isEmpty(articles) && (
+          <ActivityIndicator color={colors.primary} />
+        )}
+        {!loading && isSearched.value && isEmpty(latest) && isEmpty(articles) && (
+          <Text style={styles.txtNotFound}>Data not found.</Text>
+        )}
         {/* latest */}
         <Latest data={latest} />
         {/* featured */}

@@ -21,6 +21,15 @@ const styles = StyleSheet.create({
     width: '80%',
     marginLeft: getWidth(24),
   },
+  vHeader: {
+    alignItems: 'flex-start',
+  },
+  txtNotFound: {
+    fontSize: getHeight(16),
+    color: colors.grayLight,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
 });
 
 export default styles;

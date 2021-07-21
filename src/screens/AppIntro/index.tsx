@@ -11,11 +11,11 @@ import {
 import getGlobalStyles from "../../styles/globalStyles";
 import getStyles from "./styles";
 import { getWidth, getHeight } from "../../styles/index";
-import { getTestStore } from "../../stores/test.store";
 import { observer } from 'mobx-react-lite';
 import { ApiServices } from "../../services";
+import { getStore } from "stores";
 const AppIntro = ({ navigation }: ScreenProp) => {
-  const {test,testFun} = getTestStore();
+  const {test} = getStore();
   React.useEffect(() => {
     console.log('test:',test);
     const getApi =async ()=>{
