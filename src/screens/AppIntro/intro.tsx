@@ -29,7 +29,7 @@ const GetStarted = ({ navigation }: ScreenProp) => {
         {/* lower content */}
         <View style={[styles.bottomContent, globalStyles.container]}>
           <View>
-            <Text style={[styles.headingBigger]}>Nuntium</Text>
+            <Text style={[styles.headingBigger]}>Summarizer</Text>
             <Text style={styles.subHeading}>
               All news in one place, be the first to know the latest news
             </Text>
