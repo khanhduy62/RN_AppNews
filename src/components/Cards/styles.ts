@@ -1,6 +1,8 @@
 import {StyleSheet} from 'react-native';
 import {colors, getHeight, getWidth} from '../../styles/index';
 
+import {Fonts} from 'assets';
+
 const styles = () => {
   return StyleSheet.create({
     featureCard: {
@@ -99,12 +101,13 @@ const styles = () => {
       marginBottom: getHeight(8),
       letterSpacing: getWidth(1),
       marginRight: getWidth(40),
+      ...Fonts.Roboto,
     },
     postCardContentTitle: {
       fontSize: getHeight(16),
-
       color: colors.blackPrimary,
       lineHeight: getHeight(24),
+      ...Fonts.RobotoBold,
     },
     postCardImage: {
       width: getWidth(96),

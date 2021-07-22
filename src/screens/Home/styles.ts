@@ -1,3 +1,4 @@
+import { Fonts } from "assets";
 import { StyleSheet, Platform } from "react-native";
 import { colors, getHeight, getWidth } from "../../styles";
 
@@ -22,6 +23,7 @@ const styles = () => {
     recommededSeactionTitle: {
       fontSize: getHeight(20),
       color: colors.blackPrimary,
+      ...Fonts.RobotoBold,
     },
     seeAllOption: {
       color: colors.grayPrimary,

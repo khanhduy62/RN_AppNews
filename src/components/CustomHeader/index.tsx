@@ -4,6 +4,7 @@ import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 
 import {colors, getHeight, getWidth} from 'styles';
+import { Fonts } from 'assets';
 
 type CustomHeaderProps = {
   title?: string;
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     color: '#262626',
     fontSize: 16,
     textAlign: 'center',
-    fontWeight: 'bold',
+    ...Fonts.RobotoBold,
   },
   backIcon: {
     position: 'absolute',

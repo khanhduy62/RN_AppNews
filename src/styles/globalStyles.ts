@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {colors, getHeight, getWidth} from './index';
+import { Fonts } from 'assets';
+import { StyleSheet } from 'react-native';
+import { colors, getHeight, getWidth } from './index';
 
 const styles = () => {
   return StyleSheet.create({
@@ -18,10 +19,10 @@ const styles = () => {
     pageTitle: {
       fontSize: getHeight(24),
       lineHeight: getHeight(32),
-      fontWeight: 'bold',
       color: colors.blackPrimary,
       marginTop: getHeight(50),
-      marginBottom:10
+      marginBottom: 10,
+      ...Fonts.RobotoBold,
     },
     pageSubHeading: {
       marginTop: getHeight(10),
