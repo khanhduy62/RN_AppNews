@@ -10,7 +10,6 @@ const styles = () => {
       justifyContent: 'space-between'
     },
     headingTitle: {
-      fontFamily: "SF_Bold",
       fontSize: getHeight(24),
       lineHeight: getHeight(32),
       fontWeight: "600",

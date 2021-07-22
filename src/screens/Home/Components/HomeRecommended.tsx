@@ -6,7 +6,7 @@ import {PostCard} from 'components/Cards';
 import {navigate} from 'navigation/NavigationService';
 import {useHandlerActions} from '../Hooks';
 import {ACTION_EVENTS} from '../Types';
-import { colors } from 'styles';
+import {colors} from 'styles';
 
 type PostCardProps = {
   _id: number;
@@ -37,7 +37,13 @@ const HomeRecommended = (props, ref) => {
     <View style={[styles.recommendedSection, globalStyles.container]}>
       <View style={styles.recommendedSectionHeader}>
         <Text style={styles.recommededSeactionTitle}>Recommended for you</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigate('ListPost', {
+              id: 'top-stories',
+              name: 'Top Stories',
+            });
+          }}>
           <Text style={styles.seeAllOption}>See All</Text>
         </TouchableOpacity>
       </View>

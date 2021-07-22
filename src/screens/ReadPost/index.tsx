@@ -15,19 +15,23 @@ import getGlobalStyles from '../../styles/globalStyles';
 import getStyles from './styles';
 import Icon from '../../components/Icon';
 import {ApiServices} from '../../services';
-import { getImageURL } from 'common';
-
+import {getImageURL} from 'common';
+import {BookMarksDB} from 'helpers';
 const Post = ({navigation, route}: ScreenProp) => {
   const globalStyles = getGlobalStyles();
   const styles = getStyles();
   const [post, setPost] = useState({...route?.params, ...{body: []}});
   const [loading, setLoading] = useState(true);
 
+  const [isBookMark, setBookmark] = useState(false);
+
   useEffect(() => {
     const params = route?.params;
     console.log('params:', params);
     loaData();
     async function loaData() {
+      console.log('list bookmark:', await BookMarksDB.getListBookMaks());
+      setBookmark((await BookMarksDB.findPost(params._id)) > -1);
       const [err, data] = await ApiServices.getArticle(post.slug);
       if (!err) {
         console.log('data post:', data);
@@ -65,8 +69,24 @@ const Post = ({navigation, route}: ScreenProp) => {
                   <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Icon name="back" color="white" />
                   </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Icon name="bookmark" color="white" />
+                  <TouchableOpacity
+                    onPress={async () => {
+                      if (!isBookMark) {
+                        setBookmark(true);
+                        await BookMarksDB.addPost({
+                          _id: post._id,
+                          title: post.title,
+                          image: post.image,
+                        });
+                      } else {
+                        setBookmark(false);
+                        await BookMarksDB.removePost(post._id);
+                      }
+                    }}>
+                    <Icon
+                      name="bookmark"
+                      color={isBookMark ? 'red' : 'white'}
+                    />
                   </TouchableOpacity>
                 </View>
                 <View style={styles.share}>

@@ -54,13 +54,6 @@ const Profile = ({ navigation }: ScreenProp) => {
             <Icon name="arrowRight" color={colors.grayDarker} />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("ChangePassword")}
-            style={styles.optionCard}
-          >
-            <Text style={styles.optionCardText}>Change Password</Text>
-            <Icon name="arrowRight" color={colors.grayDarker} />
-          </TouchableOpacity>
-          <TouchableOpacity
             onPress={() => navigation.navigate("Privacy")}
             style={styles.optionCard}
           >

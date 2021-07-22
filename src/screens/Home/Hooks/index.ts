@@ -27,7 +27,7 @@ const useHandlerActions = ({actionName}) => {
         setLoading(true);
         getPostsLatest()
           .then(([e, res]) => {
-            const takeThreeLatest = take(res.latest, 10) || [];
+            const takeThreeLatest = take(res.latest, 20) || [];
             if (!e) {
               setData(takeThreeLatest);
             }
