@@ -1,4 +1,4 @@
-package com.appnews;
+package com.app.summarizer;
 
 import com.facebook.react.ReactActivity;
 

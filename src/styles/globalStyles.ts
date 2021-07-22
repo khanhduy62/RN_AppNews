@@ -18,7 +18,7 @@ const styles = () => {
     pageTitle: {
       fontSize: getHeight(24),
       lineHeight: getHeight(32),
-      fontWeight: '600',
+      fontWeight: 'bold',
       color: colors.blackPrimary,
       marginTop: getHeight(50),
       marginBottom:10
